@@ -34,12 +34,17 @@ except Exception:
 
 app = Flask(__name__)
 
-# Allow frontend dev server
+# Allow local dev frontend and Heroku frontend
 CORS(
     app,
-    origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://sftwrlab-frontend-58557d195db3.herokuapp.com",
+    ],
     supports_credentials=True,
 )
+
 
 # ---------- HELPER FUNCTIONS ----------
 
@@ -510,3 +515,4 @@ def checkin_hardware(project_id, hwset_id):
 if __name__ == "__main__":
     # Runs on http://127.0.0.1:5000
     app.run(host="127.0.0.1", port=5000, debug=True)
+
